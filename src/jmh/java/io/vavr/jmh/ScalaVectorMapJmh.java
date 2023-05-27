@@ -28,48 +28,74 @@ import java.util.concurrent.TimeUnit;
  * # JMH version: 1.36
  * # VM version: JDK 17, OpenJDK 64-Bit Server VM, 17+35-2724
  * # Intel(R) Core(TM) i7-8700B CPU @ 3.20GHz
- * # org.scala-lang:scala-library:2.13.8
  *
- * ScalaVectorMapJmh.mAddAll               -65  100000  avgt       26372880.482          ns/op
- * ScalaVectorMapJmh.mAddOneByOne          -65  100000  avgt       37832317.713          ns/op
- * ScalaVectorMapJmh.mContainsFound        -65  100000  avgt             74.736          ns/op
- * ScalaVectorMapJmh.mContainsNotFound     -65  100000  avgt             70.944          ns/op
- * ScalaVectorMapJmh.mHead                 -65  100000  avgt             29.242          ns/op
- * ScalaVectorMapJmh.mIterate              -65  100000  avgt       12124569.507          ns/op
- * ScalaVectorMapJmh.mPut                  -65  100000  avgt            274.753          ns/op
- * ScalaVectorMapJmh.mRemoveAll            -65  100000  avgt       77682581.264          ns/op
- * ScalaVectorMapJmh.mRemoveOneByOne       -65  100000  avgt       78537704.391          ns/op
- * ScalaVectorMapJmh.mRemoveThenAdd        -65  100000  avgt            822.708          ns/op
+ * implementation 'org.scala-lang:scala-library:2.13.11-M1'
  *
- * Benchmark                             (size)  Mode  Cnt          Score         Error  Units
- * ScalaVectorMapJmh.mAddAll             -65        10  avgt         _      891.588          ns/op
- * ScalaVectorMapJmh.mAddAll             -65      1000  avgt         _   131598.312          ns/op
- * ScalaVectorMapJmh.mAddAll             -65    100000  avgt         _ 27222417.883          ns/op
- * ScalaVectorMapJmh.mAddAll             -65  10000000  avgt        8_754590718.500          ns/op
- * ScalaVectorMapJmh.mAddOneByOne        -65        10  avgt         _     1351.565          ns/op
- * ScalaVectorMapJmh.mAddOneByOne        -65      1000  avgt         _   230505.086          ns/op
- * ScalaVectorMapJmh.mAddOneByOne        -65    100000  avgt         _ 38519331.004          ns/op
- * ScalaVectorMapJmh.mAddOneByOne        -65  10000000  avgt       11_514203632.500          ns/op
- * ScalaVectorMapJmh.mRemoveAll          -65        10  avgt         _      747.927          ns/op
- * ScalaVectorMapJmh.mRemoveAll          -65      1000  avgt         _   275620.950          ns/op
- * ScalaVectorMapJmh.mRemoveAll          -65    100000  avgt         _ 90461796.234          ns/op
- * ScalaVectorMapJmh.mRemoveAll          -65  10000000  avgt       23_798649411.000          ns/op
- * ScalaVectorMapJmh.mRemoveOneByOne     -65        10  avgt         _      716.848          ns/op
- * ScalaVectorMapJmh.mRemoveOneByOne     -65      1000  avgt         _   271883.379          ns/op
- * ScalaVectorMapJmh.mRemoveOneByOne     -65    100000  avgt         _ 86520238.974          ns/op
- * ScalaVectorMapJmh.mRemoveOneByOne     -65  10000000  avgt       20_752733783.000          ns/op
- * ScalaVectorMapJmh.mContainsFound          10  avgt    4          7.010 ±       0.070  ns/op
- * ScalaVectorMapJmh.mContainsFound     1000000  avgt    4        286.636 ±     163.132  ns/op
- * ScalaVectorMapJmh.mContainsNotFound       10  avgt    4          6.475 ±       0.454  ns/op
- * ScalaVectorMapJmh.mContainsNotFound  1000000  avgt    4        299.524 ±       2.474  ns/op
- * ScalaVectorMapJmh.mHead                   10  avgt    4          7.291 ±       0.549  ns/op
- * ScalaVectorMapJmh.mHead              1000000  avgt    4         26.498 ±       0.175  ns/op
- * ScalaVectorMapJmh.mIterate                10  avgt    4         88.927 ±       6.506  ns/op
- * ScalaVectorMapJmh.mIterate           1000000  avgt    4  341379733.683 ± 3030428.490  ns/op
- * ScalaVectorMapJmh.mPut                    10  avgt    4         31.937 ±       1.585  ns/op
- * ScalaVectorMapJmh.mPut               1000000  avgt    4        502.505 ±       9.940  ns/op
- * ScalaVectorMapJmh.mRemoveThenAdd          10  avgt    4        140.745 ±       2.629  ns/op
- * ScalaVectorMapJmh.mRemoveThenAdd     1000000  avgt    4       1212.184 ±      27.835  ns/op * </pre>
+ * Benchmark                            (mask)    (size)  Mode  Cnt      _     Score   Error  Units
+ * ScalaVectorMapJmh.mContainsFound        -65        10  avgt    2      _     6.529          ns/op
+ * ScalaVectorMapJmh.mContainsFound        -65       100  avgt    2      _    11.084          ns/op
+ * ScalaVectorMapJmh.mContainsFound        -65      1000  avgt    2      _    20.634          ns/op
+ * ScalaVectorMapJmh.mContainsFound        -65     10000  avgt    2      _    36.600          ns/op
+ * ScalaVectorMapJmh.mContainsFound        -65    100000  avgt    2      _   100.555          ns/op
+ * ScalaVectorMapJmh.mContainsFound        -65   1000000  avgt    2      _   269.156          ns/op
+ * ScalaVectorMapJmh.mContainsFound        -65  10000000  avgt    2      _   430.601          ns/op
+ * ScalaVectorMapJmh.mContainsNotFound     -65        10  avgt    2      _     7.007          ns/op
+ * ScalaVectorMapJmh.mContainsNotFound     -65       100  avgt    2      _    11.134          ns/op
+ * ScalaVectorMapJmh.mContainsNotFound     -65      1000  avgt    2      _    20.664          ns/op
+ * ScalaVectorMapJmh.mContainsNotFound     -65     10000  avgt    2      _    35.706          ns/op
+ * ScalaVectorMapJmh.mContainsNotFound     -65    100000  avgt    2      _   104.273          ns/op
+ * ScalaVectorMapJmh.mContainsNotFound     -65   1000000  avgt    2      _   254.167          ns/op
+ * ScalaVectorMapJmh.mContainsNotFound     -65  10000000  avgt    2      _   419.120          ns/op
+ * ScalaVectorMapJmh.mCopyOf               -65        10  avgt    2      _   847.698          ns/op
+ * ScalaVectorMapJmh.mCopyOf               -65       100  avgt    2      _  8552.204          ns/op
+ * ScalaVectorMapJmh.mCopyOf               -65      1000  avgt    2      _145905.646          ns/op
+ * ScalaVectorMapJmh.mCopyOf               -65     10000  avgt    2     1_495972.812          ns/op
+ * ScalaVectorMapJmh.mCopyOf               -65    100000  avgt    2    25_365742.926          ns/op
+ * ScalaVectorMapJmh.mCopyOf               -65   1000000  avgt    2   469_077151.250          ns/op
+ * ScalaVectorMapJmh.mCopyOf               -65  10000000  avgt    2  8203_027493.500          ns/op
+ * ScalaVectorMapJmh.mHead                 -65        10  avgt    2      _     7.234          ns/op
+ * ScalaVectorMapJmh.mHead                 -65       100  avgt    2      _    21.065          ns/op
+ * ScalaVectorMapJmh.mHead                 -65      1000  avgt    2      _    25.789          ns/op
+ * ScalaVectorMapJmh.mHead                 -65     10000  avgt    2      _    25.612          ns/op
+ * ScalaVectorMapJmh.mHead                 -65    100000  avgt    2      _    26.300          ns/op
+ * ScalaVectorMapJmh.mHead                 -65   1000000  avgt    2      _    35.969          ns/op
+ * ScalaVectorMapJmh.mHead                 -65  10000000  avgt    2      _    36.041          ns/op
+ * ScalaVectorMapJmh.mIterate              -65        10  avgt    2      _    90.502          ns/op
+ * ScalaVectorMapJmh.mIterate              -65       100  avgt    2      _  1609.942          ns/op
+ * ScalaVectorMapJmh.mIterate              -65      1000  avgt    2      _ 24484.242          ns/op
+ * ScalaVectorMapJmh.mIterate              -65     10000  avgt    2      _487208.667          ns/op
+ * ScalaVectorMapJmh.mIterate              -65    100000  avgt    2     9_449481.765          ns/op
+ * ScalaVectorMapJmh.mIterate              -65   1000000  avgt    2   330_425467.570          ns/op
+ * ScalaVectorMapJmh.mIterate              -65  10000000  avgt    2  5154_931742.500          ns/op
+ * ScalaVectorMapJmh.mPut                  -65        10  avgt    2      _    32.974          ns/op
+ * ScalaVectorMapJmh.mPut                  -65       100  avgt    2      _    60.249          ns/op
+ * ScalaVectorMapJmh.mPut                  -65      1000  avgt    2      _    92.300          ns/op
+ * ScalaVectorMapJmh.mPut                  -65     10000  avgt    2      _   133.474          ns/op
+ * ScalaVectorMapJmh.mPut                  -65    100000  avgt    2      _   230.001          ns/op
+ * ScalaVectorMapJmh.mPut                  -65   1000000  avgt    2      _   501.866          ns/op
+ * ScalaVectorMapJmh.mPut                  -65  10000000  avgt    2      _   861.718          ns/op
+ * ScalaVectorMapJmh.mRemoveOneByOne       -65        10  avgt    2      _   929.769          ns/op
+ * ScalaVectorMapJmh.mRemoveOneByOne       -65       100  avgt    2      _ 18665.378          ns/op
+ * ScalaVectorMapJmh.mRemoveOneByOne       -65      1000  avgt    2      _334045.424          ns/op
+ * ScalaVectorMapJmh.mRemoveOneByOne       -65     10000  avgt    2     5_846002.308          ns/op
+ * ScalaVectorMapJmh.mRemoveOneByOne       -65    100000  avgt    2   116_539751.645          ns/op
+ * ScalaVectorMapJmh.mRemoveOneByOne       -65   1000000  avgt    2  1703_989948.417          ns/op
+ * ScalaVectorMapJmh.mRemoveOneByOne       -65  10000000  avgt    2 17861_188233.500          ns/op
+ * ScalaVectorMapJmh.mRemoveThenAdd        -65        10  avgt    2      _   153.322          ns/op
+ * ScalaVectorMapJmh.mRemoveThenAdd        -65       100  avgt    2      _   228.369          ns/op
+ * ScalaVectorMapJmh.mRemoveThenAdd        -65      1000  avgt    2      _   392.195          ns/op
+ * ScalaVectorMapJmh.mRemoveThenAdd        -65     10000  avgt    2      _   454.382          ns/op
+ * ScalaVectorMapJmh.mRemoveThenAdd        -65    100000  avgt    2      _   676.448          ns/op
+ * ScalaVectorMapJmh.mRemoveThenAdd        -65   1000000  avgt    2      _  1229.155          ns/op
+ * ScalaVectorMapJmh.mRemoveThenAdd        -65  10000000  avgt    2      _  1677.770          ns/op
+ * ScalaVectorMapJmh.mTail                 -65        10  avgt    2      _    58.791          ns/op
+ * ScalaVectorMapJmh.mTail                 -65       100  avgt    2      _   101.469          ns/op
+ * ScalaVectorMapJmh.mTail                 -65      1000  avgt    2      _   133.833          ns/op
+ * ScalaVectorMapJmh.mTail                 -65     10000  avgt    2      _   117.610          ns/op
+ * ScalaVectorMapJmh.mTail                 -65    100000  avgt    2      _   155.144          ns/op
+ * ScalaVectorMapJmh.mTail                 -65   1000000  avgt    2      _   220.500          ns/op
+ * ScalaVectorMapJmh.mTail                 -65  10000000  avgt    2      _   254.799          ns/op
+ * </pre>
  */
 @State(Scope.Benchmark)
 @Measurement(iterations = 0)

@@ -38,10 +38,11 @@ import java.util.concurrent.TimeUnit;
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Mode.AverageTime)
 public class KotlinxPersistentHashMapJmh {
-    @Param({"10", "1000000"})
+    @Param({"10", "1000", "100000", "10000000"})
     private int size;
 
-    private final int mask = ~64;
+    @Param({"-65"})
+    private int mask;
 
     private BenchmarkData data;
     private PersistentMap<Key, Boolean> mapA;

@@ -58,15 +58,7 @@ public class KotlinxPersistentHashSetJmh {
         setA = ExtensionsKt.toPersistentHashSet(data.setA);
     }
 
-public static void main (String...args){
-    KotlinxPersistentHashSetJmh t = new KotlinxPersistentHashSetJmh();
-    t.size=10;
-    t.mask=-65;
-    t.setup();
-    PersistentSet<Key> keys = t.mAddAll();
-    System.out.println(keys);
 
-}
     @Benchmark
     public PersistentSet<Key> mAddAll() {
         return ExtensionsKt.toPersistentHashSet(data.listA);
@@ -96,7 +88,7 @@ public static void main (String...args){
         PersistentSet<Key> set = setA;
         return set.removeAll(data.listA);
     }    
-/*
+
     @Benchmark
     public int mIterate() {
         int sum = 0;
@@ -132,6 +124,5 @@ public static void main (String...args){
         Key key = data.nextKeyInB();
         return setA.contains(key);
     }
-    
- */
+
 }
